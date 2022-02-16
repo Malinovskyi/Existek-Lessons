@@ -1,0 +1,69 @@
+<ng-container>
+  <div *ngFor="let item of tree.properties">
+    <p class="nested1" *ngIf="item.level === 1">
+      <label for="item.name">{{ item.label }}</label>
+      <input
+        *ngIf="item.visible"
+        type="text"
+        name="{{ item.name }}"
+        placeholder="{{ item.name }}"
+        [(ngModel)]="item.label"
+      />
+      <button (click)="item.visible = !item.visible">{{ name }}</button>
+      <button (click)="delete(item.id)">Delete</button>
+      <button (click)="addInput(item)">Add</button>
+    </p>
+    <p class="nested2" *ngIf="item.level === 2">
+      <label for="item.name">{{ item.label }}</label>
+      <input
+        *ngIf="item.visible"
+        type="text"
+        name="{{ item.name }}"
+        placeholder="{{ item.name }}"
+        [(ngModel)]="item.label"
+      />
+      <button (click)="item.visible = !item.visible">{{ name }}</button>
+      <button (click)="delete(item.id)">Delete</button>
+      <button (click)="addInput(item)">Add</button>
+    </p>
+    <p class="nested3" *ngIf="item.level === 3">
+      <label for="item.name">{{ item.label }}</label>
+      <input
+        *ngIf="item.visible"
+        type="text"
+        name="{{ item.name }}"
+        placeholder="{{ item.name }}"
+        [(ngModel)]="item.label"
+      />
+      <button (click)="item.visible = !item.visible">{{ name }}</button>
+      <button (click)="delete(item.id)">Delete</button>
+      <button (click)="addInput(item)">Add</button>
+    </p>
+    <p class="nested4" *ngIf="item.level === 4">
+      <label for="item.name">{{ item.label }}</label>
+      <input
+        *ngIf="item.visible"
+        type="text"
+        name="{{ item.name }}"
+        placeholder="{{ item.name }}"
+        [(ngModel)]="item.label"
+      />
+      <button (click)="item.visible = !item.visible">{{ name }}</button>
+      <button (click)="delete(item.id)">Delete</button>
+      <button (click)="addInput(item)">Add</button>
+    </p>
+    <p class="nested5" *ngIf="item.level === 5">
+      <label for="item.name">{{ item.label }}</label>
+      <input
+        *ngIf="item.visible"
+        type="text"
+        name="{{ item.name }}"
+        placeholder="{{ item.name }}"
+        [(ngModel)]="item.label"
+      />
+      <button (click)="item.visible = !item.visible">{{ name }}</button>
+      <button (click)="delete(item.id)">Delete</button>
+      <button (click)="addInput(item)">Add</button>
+    </p>
+  </div>
+</ng-container>

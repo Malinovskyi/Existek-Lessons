@@ -1,0 +1,28 @@
+.nested1 {
+  margin-left: 30px;
+}
+.nested2 {
+  margin-left: 60px;
+}
+.nested3 {
+  margin-left: 90px;
+}
+.nested4 {
+  margin-left: 120px;
+}
+.nested5 {
+  margin-left: 150px;
+}
+.nested1,
+.nested2,
+.nested3,
+.nested4,
+.nested5 {
+  font-size: 17px;
+  button {
+    margin: 8px;
+    cursor: pointer;
+    padding: 3px 5px;
+    font-size: 13px;
+  }
+}
