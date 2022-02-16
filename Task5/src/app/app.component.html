@@ -1,0 +1,244 @@
+<form class="form" [formGroup]="form">
+  <h1 class="form-title">{{ title }}</h1>
+
+  <div class="form-container">
+    <div class="form-container__box">
+      <app-form-label label="Name :"></app-form-label>
+      <input
+        formControlName="name"
+        class="form-container__box-input"
+        type="text"
+        placeholder="type your name"
+      />
+
+      <small
+        *ngIf="form.controls['name']?.touched && form.controls['name']?.invalid"
+        class="error"
+      >
+        Type your name
+      </small>
+    </div>
+
+    <div class="form-container__box">
+      <app-form-label label="Fullname :"></app-form-label>
+
+      <input
+        formControlName="fullname"
+        class="form-container__box-input"
+        type="text"
+        placeholder="type your surname"
+      />
+
+      <small
+        *ngIf="
+          form.controls['fullname']?.touched &&
+          form.controls['fullname']?.invalid
+        "
+        class="error"
+      >
+        Type your fullname
+      </small>
+    </div>
+
+    <div class="form-container__box">
+      <app-form-label label="Age :"></app-form-label>
+
+      <input
+        formControlName="age"
+        class="form-container__box-input"
+        type="number"
+        placeholder="type your age"
+      />
+
+      <small
+        *ngIf="
+          form.controls['age'].hasError('required') &&
+          form.controls['age']?.touched
+        "
+        class="error"
+        >type your age</small
+      >
+      <small
+        *ngIf="
+          form.controls['age'].hasError('forbiddenNumber') &&
+          form.controls['age']?.touched
+        "
+        class="error"
+      >
+        age is forbidden
+      </small>
+    </div>
+
+    <div class="form-container__box">
+      <app-form-label label="Country :"></app-form-label>
+
+      <input
+        formControlName="country"
+        class="form-container__box-input"
+        type="text"
+        placeholder="type your country"
+      />
+      <small
+        *ngIf="
+          form.controls['country'].hasError('required') &&
+          form.controls['country']?.touched
+        "
+        class="error"
+      >
+        Type your country
+      </small>
+      <small
+        *ngIf="form.controls['country'].hasError('getForbiddenNameAsync')"
+        class="error"
+        >forbidden country</small
+      >
+    </div>
+
+    <div class="form-container__box">
+      <app-form-label label="High education :"></app-form-label>
+
+      <input
+        formControlName="highEducation"
+        class="form-container__box-input"
+        type="checkbox"
+      />
+
+      <small
+        *ngIf="
+          form.controls['highEducation']?.touched &&
+          form.controls['highEducation']?.invalid
+        "
+        class="error"
+      >
+        Type your education
+      </small>
+    </div>
+
+    <div class="form-container__box">
+      <app-form-label label="English level :"></app-form-label>
+
+      <select
+        class="form-container__box-input"
+        name="learnEng"
+        id="learnEng"
+        formControlName="learnEng"
+      >
+        <option value="beginner">Beginner</option>
+        <option value="intermidiate">Intermidiate</option>
+        <option value="high">High</option>
+      </select>
+
+      <small
+        *ngIf="
+          form.controls['learnEng']?.touched &&
+          form.controls['learnEng']?.invalid
+        "
+        class="error"
+      >
+        Type your English level
+      </small>
+    </div>
+
+    <div class="form-city" formGroupName="city">
+      <div class="form-container__box">
+        <app-form-label label="Region :"></app-form-label>
+
+        <select
+          class="form-container__box-input"
+          name="region"
+          id="region"
+          formControlName="region"
+          name="region"
+          id="region"
+        >
+          <option value="ukraine">Ukraine</option>
+          <option value="russia">Russia</option>
+          <option value="poland">Poland</option>
+        </select>
+
+        <small
+          *ngIf="
+            cityGroup.controls['region']?.touched &&
+            cityGroup.controls['region']?.invalid
+          "
+          class="error"
+        >
+          Type your region
+        </small>
+      </div>
+
+      <div class="form-container__box">
+        <app-form-label label="City :"></app-form-label>
+
+        <input
+          formControlName="city"
+          class="form-container__box-input"
+          type="text"
+          placeholder="type your city"
+        />
+
+        <small
+          *ngIf="
+            cityGroup.controls['city']?.touched &&
+            cityGroup.controls['city']?.invalid
+          "
+          class="error"
+        >
+          Type your city
+        </small>
+      </div>
+
+      <div class="form-container__box">
+        <app-form-label label="Street :"></app-form-label>
+
+        <input
+          formControlName="street"
+          class="form-container__box-input"
+          type="text"
+          placeholder="type your street"
+        />
+
+        <small
+          *ngIf="
+            cityGroup.controls['street']?.touched &&
+            cityGroup.controls['street']?.invalid
+          "
+          class="error"
+        >
+          Type your street
+        </small>
+      </div>
+
+      <div class="form-container__box">
+        <label class="form-container__box-label" for="postCode"
+          >Post code :</label
+        >
+        <input
+          formControlName="postCode"
+          class="form-container__box-input"
+          type="text"
+          placeholder="type your post code"
+        />
+
+        <small
+          *ngIf="
+            cityGroup.controls['postCode']?.touched &&
+            cityGroup.controls['postCode']?.invalid
+          "
+          class="error"
+        >
+          Type your post code
+        </small>
+      </div>
+    </div>
+  </div>
+
+  <button
+    [disabled]="form.invalid"
+    (click)="onSubmit()"
+    class="form-submit"
+    type="submit"
+  >
+    Submit
+  </button>
+</form>
