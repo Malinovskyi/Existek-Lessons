@@ -1,0 +1,42 @@
+<form class="form" [formGroup]="form">
+  <h2 class="form-title">Add Products:</h2>
+
+  <div formArrayName="productList">
+    <div *ngFor="let productForm of productList.controls; index as i">
+      <ng-container [formGroupName]="i">
+        <div class="form-container">
+          <div>
+            <input
+              formControlName="name"
+              type="text"
+              placeholder="Product name"
+              class="form-container__title-input"
+            />
+          </div>
+          <input
+            formControlName="product"
+            type="number"
+            placeholder="Amount"
+            class="form-container__product-input"
+          />
+          <button (click)="remove(i)" type="button" class="form-button">
+            remove
+          </button>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+
+  <button type="button" class="form-button add" (click)="addLesson()">
+    Add new item
+  </button>
+  <button
+    [disabled]="form.invalid"
+    type="button"
+    class="form-button"
+    (click)="createList()"
+  >
+    Create product list
+  </button>
+</form>
+<!--S-->
