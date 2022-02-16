@@ -1,0 +1,74 @@
+<div class="p-3">
+  {{ now | date: "fullTime" }}
+</div>
+
+<div
+  class="max-w-6xl justify-between mx-auto sm:px-6 mt-5 bg-gray-300 flex border-gray-200 sm:rounded-lg"
+>
+  <div class="p-3 flex flex-col">
+    <label>Search by country:</label>
+    <input type="text" [(ngModel)]="findCountry" />
+  </div>
+
+  <div class="p-3 flex flex-col">
+    <label>Search by place:</label>
+    <input type="text" [(ngModel)]="findPlace" />
+  </div>
+
+  <div class="p-3 flex flex-col">
+    <label>Search by latitude:</label>
+    <input type="number" [(ngModel)]="findLatitude" />
+  </div>
+
+  <div class="p-3 flex flex-col">
+    <label>Search by post code:</label>
+    <input type="number" [(ngModel)]="findPostCode" />
+  </div>
+
+  <div class="p-3 flex flex-col">
+    <label>Search by credit:</label>
+    <input type="text" [(ngModel)]="findCredit" />
+  </div>
+</div>
+
+<div class="max-w-7xl mx-auto sm:px-6 lg:px-8 mt-24">
+  <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+    <app-table>
+      <app-table-header [titles]="titles"></app-table-header>
+      <app-table-body>
+        <tr
+          *ngFor="
+            let item of zipCodes
+              | filterTextPipe
+                : findCountry
+                : findPlace
+                : findLatitude
+                : findPostCode
+                : findCredit
+          "
+          class="hover:bg-gray-50 cursor-pointer"
+        >
+          <td class="px-6 py-4 whitespace-nowrap">
+            <div>
+              <div class="text-sm text-gray-500">
+                {{ item.country }}
+              </div>
+            </div>
+          </td>
+          <td class="px-6 py-4 whitespace-nowrap">
+            <div class="text-sm text-gray-500">{{ item.place }}</div>
+          </td>
+          <td class="px-6 py-4 whitespace-nowrap">
+            {{ item.latitude }}
+          </td>
+          <td class="px-6 py-4 whitespace-nowrap">
+            {{ item.code }}
+          </td>
+          <td class="px-6 py-4 whitespace-nowrap">
+            {{ item.credit }}
+          </td>
+        </tr>
+      </app-table-body>
+    </app-table>
+  </div>
+</div>
