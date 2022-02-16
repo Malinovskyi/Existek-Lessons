@@ -1,0 +1,28 @@
+<h1>{{ title }}</h1>
+<ng-container
+  *ngTemplateOutlet="treeTemplate; context: { $implicit: treeArray }"
+></ng-container>
+<ng-template #treeTemplate let-childReplies>
+  <ol>
+    <li *ngFor="let reply of childReplies; let i = index">
+      <label>{{ reply.value }}</label>
+      <input
+        *ngIf="!reply.id"
+        type="text"
+        placeholder="change"
+        [(ngModel)]="reply.value"
+      />
+      <button (click)="reply.id = !reply.id">Edit</button>
+      <button (click)="add(childReplies, reply, i)">Add</button>
+      <button (click)="delete(childReplies, reply)">Delete</button>
+      <ng-container *ngIf="reply.children">
+        <ng-container
+          *ngTemplateOutlet="
+            treeTemplate;
+            context: { $implicit: reply.children }
+          "
+        ></ng-container>
+      </ng-container>
+    </li>
+  </ol>
+</ng-template>
